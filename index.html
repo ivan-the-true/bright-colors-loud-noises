@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/bcln.css">
+  <script type="text/javascript" src="assets/js/lib/paper-full.js"></script>
+  <script type></script>
+  <script type="text/paperscript" canvas="myCanvas">
+  var canvas = document.getElementById("myCanvas");
+  var radius = 10;
+  var spaceFactor = 5; 
+  for (var i = 0; i < canvas.width; i = i + radius * spaceFactor) {
+    for (var j = 0; j < canvas.height; j = j + radius * spaceFactor){
+      new Path.Circle({
+        center: [i+radius, j+radius],
+        radius: radius,
+        strokeColor: 'purple'
+      }).fillColor = 'purple';
+    }
+  }
+  </script>
+  <title>BCLN</title>
+</head>
+<body>
+  <canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>
