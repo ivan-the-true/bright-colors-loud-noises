@@ -4,23 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/bcln.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.js">
   <script type="text/javascript" src="assets/js/lib/paper-full.js"></script>
   <script type></script>
   <script type="text/paperscript" canvas="myCanvas">
-  var minCircleSize = 10
+  var minCircleSize = 100
   var radius;
   var xCoordinate;
   var yCoordinate;
- 
+  var circles = [];
   function onKeyDown(event) {
-    radius = Math.floor(Math.random() * (view.size.height/2)) + minCircleSize;
+    radius = Math.floor(Math.random() * (view.size.height)) + minCircleSize;
     xCoordinate = Math.floor(Math.random() * view.size.width);
     yCoordinate = Math.floor(Math.random() * view.size.height);
     var myCircle = new Path.Circle({
       center: [xCoordinate, yCoordinate],
       radius: radius,
       strokeColor: 'purple'
-    }).fillColor = 'purple';
+    });
+    myCircle.fillColor = 'purple';
+    circles.push(myCircle);
+  }
+
+  function onFrame(event) {
+    for (var i = 0; i < circles.length; i++) {
+      circles[i].fillColor.hue += 1;
+      circles[i].scale(.92);
+    }
   }
   </script>
   <title>BCLN</title>
